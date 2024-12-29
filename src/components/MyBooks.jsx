@@ -3,13 +3,13 @@ import { useSelector } from "react-redux";
 
 const MyBooks = () => {
 
-const books = useSelector(state => console.log(state.bookList.books));
+const books = useSelector(state => console.log(state));
 console.log(books)
 
     return (
         <div>
             {
-                books && books.length > 0 ?
+                books && books?.length > 0 ?
                 <div>
                     {
                         books?.map(book =>
