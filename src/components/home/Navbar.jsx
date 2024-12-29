@@ -1,6 +1,9 @@
 import React from 'react';
 import { Button, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import CalculateIcon from '@mui/icons-material/Calculate';
 
 const Navbar = () => {
     return (
@@ -9,13 +12,13 @@ const Navbar = () => {
                 Redux Meterial
             </Typography>
             <Button component={Link} to="/" variant="contained" color="primary">
-                Home
+            <AccountBalanceIcon />  Home
             </Button>
             <Button component={Link} to="/my-books" variant="contained" color="secondary">
-                Books
+            <LibraryBooksIcon />   Books
             </Button>
             <Button component={Link} to="/counter-view" variant="contained" color="success">
-                Counts
+            <CalculateIcon />   Counts
             </Button>
             
         </div>

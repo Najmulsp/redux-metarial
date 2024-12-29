@@ -1,10 +1,10 @@
 import React from 'react';
-import Navbar from './Navbar';
+import PhotoAlbum from './PhotoAlbum';
 
 const Home = () => {
     return (
         <div>
-            <Navbar />
+            <PhotoAlbum />           
         </div>
     );
 };
