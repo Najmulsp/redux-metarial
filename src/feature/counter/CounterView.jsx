@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { decrement, increment, reset } from "./counterSlice";
 import {
@@ -7,14 +7,26 @@ import {
   AppBar,
   Toolbar,
   CssBaseline,
+  Grid2,
+  Box,
+  
 } from "@mui/material";
+// import {Stack,Item } from '@mui/material/Stack';
+
+import { fetchPosts } from "../posts/postSlice";
 
 const CounterView = () => {
   const count = useSelector((state) => state.counter.count);
+  const posts = useSelector((state) => state.posts);
+  const myPosts =posts?.posts;
 
   const dispatch = useDispatch();
+
+  useEffect(()=>{
+dispatch(fetchPosts())
+  },[])
   return (
-    <div>
+    <>
       <CssBaseline />
       <AppBar position="relative">
         <Toolbar>
@@ -27,7 +39,21 @@ const CounterView = () => {
       <Button onClick={() => dispatch(increment())}>Increment</Button>
       <Button onClick={() => dispatch(decrement())}>Decrement</Button>
       <Button onClick={() => dispatch(reset())}>Reset</Button>
-    </div>
+
+      <div>
+        {
+         myPosts?.map(post =>
+          <Grid2 key={post.id} container display="flex" spacing={4} justify="center" alignItems="center">
+              <Box component="section" sx={{ p: 2, border: '1px dashed grey' }}>
+                <Typography variant="h4">{post.title}</Typography>
+                <p>{post.body}</p>
+              </Box >
+            </Grid2>
+
+         )
+        }
+      </div>
+    </>
   );
 };
 
