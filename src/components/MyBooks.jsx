@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { Typography, Button, IconButton, Box, TextField } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
+import Form from "../feature/books/Form";
 
 const MyBooks = () => {
   const books = useSelector((state) => state.books.books);
@@ -45,6 +46,7 @@ const MyBooks = () => {
       <TextField id="standard-basic" label="Standard" variant="standard" />
     </Box>
       </section>
+      <Form />
     </>
   );
 };
