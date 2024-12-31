@@ -41,8 +41,22 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import DeblurIcon from '@mui/icons-material/Deblur';
+import { Link, NavLink } from 'react-router-dom';
 
-const pages = ['Home', 'Books', 'Counts'];
+const pages = [
+    {
+        name: "Home",
+        to: "/"
+    },
+    {
+        name: "Books",
+        to: "/my-books"
+    },
+    {
+        name: "Count",
+        to: "/counter-view"
+    },
+];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Navbar() {
@@ -114,11 +128,24 @@ function Navbar() {
               onClose={handleCloseNavMenu}
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
+              {/* {pages.map((page) => (
+                <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                  <Typography component={Link} to={page.to}  sx={{ textAlign: 'center' }}>{page.name}</Typography>
+                  
                 </MenuItem>
-              ))}
+              ))} */}
+              {pages.map((page) => (
+              <Button
+                key={page.name}
+                to={page.to}
+                onClick={handleCloseNavMenu}
+                // style={{color: 'white', display: 'block', marginLeft: "20px" }}
+                sx={{ my: 2, color: 'white', display: 'block', marginLeft: "20px" }}
+              >
+                {page.name}
+              </Button>
+            ))}
+              
             </Menu>
           </Box>
           <DeblurIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -142,13 +169,14 @@ function Navbar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Button
-                key={page}
+              <NavLink
+                key={page.name}
+                to={page.to}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
-              </Button>
+                {page.name}
+              </NavLink>
             ))}
           </Box>
           <Box sx={{ flexGrow: 0 }}>
