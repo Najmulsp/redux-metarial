@@ -14,6 +14,7 @@ import {
 // import {Stack,Item } from '@mui/material/Stack';
 
 import { fetchPosts } from "../posts/postSlice";
+import Todos from "../todos/Todos";
 
 const CounterView = () => {
   const count = useSelector((state) => state.counter.count);
@@ -39,10 +40,12 @@ dispatch(fetchPosts())
       <Button onClick={() => dispatch(increment())}>Increment</Button>
       <Button onClick={() => dispatch(decrement())}>Decrement</Button>
       <Button onClick={() => dispatch(reset())}>Reset</Button>
-
+<section>
+  <Todos />
+</section>
       <div>
         {
-         myPosts?.map(post =>
+         myPosts?.slice(0, 10).map(post =>
           <Grid2 key={post.id} container display="flex" spacing={4} justify="center" alignItems="center">
               <Box component="section" sx={{ p: 2, border: '1px dashed grey' }}>
                 <Typography variant="h4">{post.title}</Typography>
