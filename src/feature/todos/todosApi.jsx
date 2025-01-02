@@ -1,22 +1,24 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const todoSlice = createApi({
-
-reducerPath: "todoApi", // এটি `reducer`-এর জন্য একটি ইউনিক নাম
-  baseQuery: fetchBaseQuery({ baseUrl: "https://jsonplaceholder.typicode.com" }), // API-এর বেস URL
+  reducerPath: "todoApi",
+  baseQuery: fetchBaseQuery({ baseUrl: "https://jsonplaceholder.typicode.com" }),
   endpoints: (builder) => ({
     getAllTodos: builder.query({
-      query: () => {
-        return "/todos";// API endpoint
-    },
+      query: () => "/todos",
     }),
-    getTodo: (builder) =>{
-        query: (id) =>{
-            return `/todos/${id}`
-        }
-    }
+    getTodo: builder.query({
+      query: (id) => `/todos/${id}`,
+    }),
+    addTodo: builder.mutation({
+      query: (params) => ({
+        url: "/todos",
+        method: "POST",
+        body: params,
+      }),
+    }),
   }),
 });
 
-export const { useGetAllTodosQuery } = todoSlice;
+export const { useGetAllTodosQuery, useAddTodoMutation, useGetTodoQuery } = todoSlice;
 export default todoSlice;
