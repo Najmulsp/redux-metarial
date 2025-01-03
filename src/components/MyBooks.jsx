@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { Typography, Button, IconButton, Box, TextField } from "@mui/material";
+import { Typography, Button, IconButton, Box, TextField, Dialog, DialogContent, DialogTitle, DialogContentText, DialogActions } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -24,7 +24,9 @@ const MyBooks = () => {
       {books && books?.length > 0 ? (
         <div>
           {books?.map((book) => (
-            <Card sx={{ maxWidth: 345 }} key={book.id}
+            <Card sx={{ maxWidth: 345, margin: "10px" }}
+             key={book.id}
+
             >
             <CardHeader
               avatar={
@@ -41,7 +43,7 @@ const MyBooks = () => {
               subheader="September 14, 2016"
             />
             <CardMedia
-              component="img"
+              component={"img"}
               height="194"
               image={book.image}
               alt="Paella dish"
@@ -133,6 +135,39 @@ const MyBooks = () => {
     </Box>
       </section>
       <Form />
+
+
+                        {/* card */}
+    <Card sx={{maxWidth: 300}}>
+      <CardMedia
+      component={"img"}
+      height="140"
+      image="https://media.istockphoto.com/id/184103864/photo/clouds-on-sky.jpg?s=2048x2048&w=is&k=20&c=GA5nEQ2WxJjoEOq9vqkW3gteAtA12C3wdsyT53BaPwg="
+      alt="test image"
+      />
+    <CardContent>
+      <Typography gutterBottom variant="h5" component="div">
+        Web Design
+      </Typography>
+      <Typography variant="body2">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, ipsum?
+      </Typography>
+    </CardContent>
+    <CardActions>
+      <Button size="small" color="primary">Share</Button>
+      <Button size="small" color="primary">Delete</Button>
+    </CardActions>
+    </Card>
+    <Dialog open={true}>
+      <DialogTitle>Are You Sure</DialogTitle>
+      <DialogContent>
+        <DialogContentText>are you sure to delete this products ?</DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button>Cancel</Button>
+        <Button>Delete</Button>
+      </DialogActions>
+    </Dialog>
     </>
   );
 };
