@@ -42,6 +42,8 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import DeblurIcon from '@mui/icons-material/Deblur';
 import { Link, NavLink } from 'react-router-dom';
+import { Tab, Tabs } from '@mui/material';
+import { Margin } from '@mui/icons-material';
 
 const pages = [
     {
@@ -128,14 +130,17 @@ function Navbar() {
               onClose={handleCloseNavMenu}
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
-              {/* {pages.map((page) => (
-                <MenuItem key={page.name} onClick={handleCloseNavMenu}>
-                  <Typography component={Link} to={page.to}  sx={{ textAlign: 'center' }}>{page.name}</Typography>
-                  
-                </MenuItem>
-              ))} */}
               {pages.map((page) => (
-              <Button
+                <Box key={page.name} onClick={handleCloseNavMenu}>
+                  <NavLink component={Link} to={page.to}  sx={{ textAlign: 'center', marginLeft: "20px" }}>{page.name}</NavLink>
+                  
+                </Box>
+              ))}
+              {/* <Tabs>
+
+              
+              {pages.map((page) => (
+              <Tab
                 key={page.name}
                 to={page.to}
                 onClick={handleCloseNavMenu}
@@ -143,9 +148,9 @@ function Navbar() {
                 sx={{ my: 2, color: 'white', display: 'block', marginLeft: "20px" }}
               >
                 {page.name}
-              </Button>
+              </Tab>
             ))}
-              
+              </Tabs> */}
             </Menu>
           </Box>
           <DeblurIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -173,12 +178,13 @@ function Navbar() {
                 key={page.name}
                 to={page.to}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: 'white', display: 'block', marginLeft: "20px" }}
               >
                 {page.name}
               </NavLink>
             ))}
           </Box>
+
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

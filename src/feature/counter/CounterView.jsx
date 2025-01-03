@@ -9,6 +9,8 @@ import {
   CssBaseline,
   Grid2,
   Box,
+  Tabs,
+  Tab,
   
 } from "@mui/material";
 // import {Stack,Item } from '@mui/material/Stack';
@@ -34,8 +36,19 @@ dispatch(fetchPosts())
           <Typography variant="h4" align="center">
             Count App
           </Typography>
+          <Tabs sx={{marginLeft: "auto"}} textColor="inherit">
+            <Tab label="Home"/>
+            <Tab label="About"/>
+            <Tab label="Contact"/>
+          </Tabs>
         </Toolbar>
       </AppBar>
+
+
+
+
+
+      
       <p>count : {count}</p>
       <Button onClick={() => dispatch(increment())}>Increment</Button>
       <Button onClick={() => dispatch(decrement())}>Decrement</Button>
